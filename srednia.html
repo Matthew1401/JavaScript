@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <label for="imie"><strong>Imię i nazwisko:</strong> </label>
+    <input type="text" id="imie" /><br />
+
+    <label for="polskiego"><strong>Ocena z polskiego:</strong> </label>
+    <input class="ocena" type="number" id="polskiego" /><br />
+
+    <label for="matematyki"><strong>Ocena z matematyki:</strong> </label>
+    <input class="ocena" type="number" id="matematyki" /><br />
+
+    <label for="fizyki"><strong>Ocena z fizyki:</strong> </label>
+    <input class="ocena" type="number" id="fizyki" /><br />
+
+    <label for="historii"><strong>Ocena z historii:</strong> </label>
+    <input class="ocena" type="number" id="historii" /><br />
+
+    <label for="wosu"><strong>Ocena z wosu:</strong> </label>
+    <input class="ocena" type="number" id="wosu" /><br />
+
+    <label for="wfu"><strong>Ocena z wfu:</strong> </label>
+    <input class="ocena" type="number" id="wfu" /><br />
+
+    <label for="chemii"><strong>Ocena z chemii:</strong> </label>
+    <input class="ocena" type="number" id="chemii" /><br />
+
+    <label for="biologii"><strong>Ocena z biologii:</strong> </label>
+    <input class="ocena" type="number" id="biologii" /><br />
+
+    <input type="button" value="Oblicz srednia" onclick="srednia()" />
+  </body>
+  <script>
+    const oceny = window.document.getElementsByClassName("ocena");
+    function srednia() {
+      let suma_ocen = 0;
+      for (let i = 0; i < oceny.length; i++) {
+        suma_ocen += parseFloat(oceny[i].value);
+      }
+      alert(suma_ocen / oceny.length);
+    }
+  </script>
+</html>
