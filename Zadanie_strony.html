@@ -14,9 +14,13 @@
         else {
           if (d != 0 || p != 0) {
             var wynik = (Math.abs(p) * 100) / Math.abs(d);
+            var kilometr = (wynik/100) * ustalCene();
             wynik = wynik.toFixed(2);
-            out.innerHTML = "Spalanie: " + wynik + " l/100km";
-          } else out.innerHTML = "Dystans i paliwo muszą być liczbą dodatnią!";
+            kilometr = kilometr.toFixed(2);
+            out.innerHTML = "Spalanie: " + wynik + " l/100km <br>";
+            out.innerHTML += "Szacunkowy koszt przejazdu 1km to: " + kilometr + "zł";
+          } 
+          else out.innerHTML = "Dystans i paliwo muszą być liczbą dodatnią!";
         }
       }
 
@@ -32,6 +36,16 @@
         document.getElementById("r_et").checked = true;
         document.getElementById("r_lpg").checked = false;
       }
+
+      function ustalCene()
+      {
+        if(document.getElementById("r_on").checked)
+          return 7.42;
+        if(document.getElementById("r_et").checked)
+          return 6.42;
+        if(document.getElementById("r_lpg").checked)
+          return 3.28;
+      }
     </script>
   </head>
 
@@ -41,21 +55,14 @@
     <p>Paliwo : <input type="text" id="p" /> [litry]</p>
     <p>Dystans : <input type="text" id="d" /> [kilometry]</p>
 
-    <p>
-      <input type="radio" id="r_on" name="paliwo" value="on" />olej napęwody
-      <input
-        type="radio"
-        id="r_et"
-        name="paliwo"
-        value="et"
-        checked="checked"
-      />benzyna <input type="radio" id="r_lpg" name="paliwo" value="lpg" />gaz
-    </p>
+    <form name="wybieraczPaliwa">
+      <input type="radio" id="r_on" name="paliwo" value="7.42" />olej napęwody
+      <input type="radio" id="r_et" name="paliwo" value="6.42" checked="checked" />benzyna
+      <input type="radio" id="r_lpg" name="paliwo" value="3.28" />gaz
+    </form>
 
     <input type="button" value="Oblicz" onclick="spalanie()" />
-
     <input type="button" value="Wyczyść" onclick="czyszczenie()" />
-
     <p id="w"></p>
   </body>
 </html>
